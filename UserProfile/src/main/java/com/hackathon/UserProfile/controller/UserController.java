@@ -29,7 +29,7 @@ public class UserController {
 	
 	@PostMapping("/signup")
 	public SignUpResponse saveUser(@RequestBody UserModelDto user) {
-		System.out.println(user.getFirstName() + "   "+user.getLastName());
+		System.out.println("Name of User"+user.getFirstName() + "   "+user.getLastName());
 		return userService.saveUser(user);
 	}
 	
