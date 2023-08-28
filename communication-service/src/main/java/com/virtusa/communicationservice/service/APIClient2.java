@@ -13,6 +13,7 @@ public interface APIClient2 {
 	@GetMapping("api/health-care-service/{healt_id}")
 	HealthCareDto getHealthId(@PathVariable("healt_id") Long patientId);
 	
-
+//	@GetMapping("DRUG-INTERACTION-SERVICE/api/drug-interaction")
+//     String getMessage();
 
 }

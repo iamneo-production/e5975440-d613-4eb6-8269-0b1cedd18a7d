@@ -12,6 +12,7 @@ public interface APIClient {
 	@GetMapping("api/patient-data/{patient_id}")
 	PatientDto getPatientId(@PathVariable("patient_id") Long patientId);
 	
-
+//	@GetMapping("DRUG-INTERACTION-SERVICE/api/drug-interaction")
+//     String getMessage();
 
 }
