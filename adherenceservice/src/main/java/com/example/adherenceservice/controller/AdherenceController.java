@@ -39,7 +39,17 @@ public class AdherenceController {
 	public String deleteadherence(@RequestParam(value = "id" , required = true) int adherenceId ) {
 		return adherenceService.deleteadherence(adherenceId);
 	}
+
+	@DeleteMapping("/deleteAdherenceByUserId")
+	public String deleteAdherenceByUserId(@RequestParam(value = "id" , required = true) int userId ) {
+		return adherenceService.deleteAdherenceByUserId(userId);
+	}
 	
+	@DeleteMapping("/deleteAdherenceByMedicationId")
+	public String deleteAdherenceByMedicationId(@RequestParam(value = "id" , required = true) int medicationId ) {
+		return adherenceService.deleteAdherenceByMedicationId(medicationId);
+	}
+
 	@PutMapping("/editadherence")
 	public String editadherence(@RequestBody AdherenceDto adherenceDto, @RequestParam(value = "id") int adherenceId) {
 		return adherenceService.editadherence(adherenceDto,adherenceId);

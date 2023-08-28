@@ -12,4 +12,5 @@ import com.example.feedbackservice.model.PatientQuery;
 @Repository
 public interface FeedbackRepo extends JpaRepository<PatientQuery,Integer> {
 	public List<PatientQuery> findByPatientId(int patientId);
+	deleteByPatientId(int patientId);
 }

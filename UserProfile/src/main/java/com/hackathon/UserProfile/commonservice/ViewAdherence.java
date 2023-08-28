@@ -10,12 +10,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hackathon.UserProfile.model.Patient;
 
-@FeignClient(name = "patientuser")
-public interface ViewPatient {
+@FeignClient(name = "adherenceservice")
+public interface ViewAdherence {
 
-	@GetMapping("/patient/getPatientByUserId")
-	public  Optional<Patient> getPatientByUserId(@RequestParam(value="id" , required = true) int userId);
-
-	@DeleteMapping("/patient/deletePatientByUserId")
-	public String deletePatientByUserId(@RequestParam(value = "id" , required = true) int userId ); 
+    @DeleteMapping("/adherence/deleteAdherenceByUserId")
+	public String deleteAdherenceByUserId(@RequestParam(value = "id" , required = true) int userId );
+    
 }

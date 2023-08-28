@@ -46,6 +46,11 @@ public class FeedbackController {
 		return feedbackService.deleteQuery(queryId);
 	}
 
+	@DeleteMapping("/deleteQueryByPatientId")
+	public String deleteQueryByPatientId(@RequestParam(value = "id" , required = true) int  patientId) {
+		return feedbackService.deleteQueryByPatientId(patientId);
+	}
+
 	@PutMapping("/editQuery")
 	public String editUser(@RequestBody PatientQueryDto patientQueryDto, @RequestParam(value = "id") int queryId) {
 		return feedbackService.editUser(patientQueryDto,queryId);

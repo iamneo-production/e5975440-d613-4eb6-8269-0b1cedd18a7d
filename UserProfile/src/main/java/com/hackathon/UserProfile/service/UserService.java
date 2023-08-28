@@ -16,6 +16,8 @@ import org.springframework.stereotype.Service;
 
 import com.hackathon.UserProfile.commonservice.ViewHealthCareProvider;
 import com.hackathon.UserProfile.commonservice.ViewPatient;
+import com.hackathon.UserProfile.commonservice.ViewAdherence;
+
 import com.hackathon.UserProfile.exception.CustomException;
 import com.hackathon.UserProfile.model.HealthCareProvider;
 import com.hackathon.UserProfile.model.Medication;
@@ -38,6 +40,11 @@ public class UserService {
 	
 	@Autowired
 	ViewHealthCareProvider careProvider;
+
+	@Autowired
+	ViewAdherence viewAdherence;
+
+
 
 //	@Autowired
 //	PasswordEncoder passwordEncoder;
@@ -92,6 +99,20 @@ public class UserService {
 
 		try {
 			userRepo.deleteById(userId);
+			User user=userRepo.findById(userId).get();
+			if(user.getUserRole().equals(Role.PATIENT))
+			{
+				patient.deletePatientByUserId(userId);
+				viewAdherence.deleteAdherenceByUserId(userId);
+
+			}
+			else{
+				careProvider.deleteHealthCareProviderByUserId(userId);
+
+			}
+
+
+			
 			response = "Successfully Deleted";
 		}
 		catch(IllegalArgumentException e) {

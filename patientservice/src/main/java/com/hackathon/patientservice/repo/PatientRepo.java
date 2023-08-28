@@ -10,4 +10,5 @@ import com.hackathon.patientservice.model.Patient;
 @Repository
 public interface PatientRepo extends JpaRepository<Patient,Integer> {
 	 Optional<Patient> findByUserId(int userid);
+	deleteByUserId(int userId);
 }

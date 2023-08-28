@@ -49,4 +49,9 @@ public class HealthCareController {
 		return careService.getHealthCareProviderByUserId(userId);
 	}
 
+	@DeleteMapping("/deleteHealthCareProviderByUserId")
+	public String deleteHealthCareProviderByUserId(@RequestParam(value = "id" , required = true) int userId ) {
+		return careService.deleteHealthCareProviderByUserId(userId);
+	}
+
 }

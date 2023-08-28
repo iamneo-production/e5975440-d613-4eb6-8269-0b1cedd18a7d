@@ -55,6 +55,45 @@ public class AdherenceService {
 		return response;
 	}
 
+	public String deleteAdherenceByUserId(int userId) {
+		String response;
+
+		try {
+			adherenceRepo.deleteByUserId(userId);
+			response = "Successfully Deleted";
+		}
+		catch(IllegalArgumentException e) {
+			response = "Not Deleted , Please try again";
+		}
+		catch (EmptyResultDataAccessException e) {
+			response = "No User Present with this User Id";
+		}
+		catch(Exception e) {
+			response =  "Something Wrong";
+		}
+		return response;
+	}
+
+	public String deleteAdherenceByMedicationId(int medicationId) {
+		String response;
+
+		try {
+			adherenceRepo.deleteByMedicationId(medicationId);
+			
+			response = "Successfully Deleted";
+		}
+		catch(IllegalArgumentException e) {
+			response = "Not Deleted , Please try again";
+		}
+		catch (EmptyResultDataAccessException e) {
+			response = "No User Present with this User Id";
+		}
+		catch(Exception e) {
+			response =  "Something Wrong";
+		}
+		return response;
+	}
+
 	public String editadherence(AdherenceDto adherenceDto, int adherenceId) {
 		String response=null;
 		try {

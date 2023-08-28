@@ -50,6 +50,25 @@ public class HealthCareService {
 		return response;
 	}
 
+	public String deleteHealthCareProviderByUserId(int userId) {
+		String response;
+
+		try {
+			careRepo.deleteByUserId(userId);
+			response = "Successfully Deleted";
+		}
+		catch(IllegalArgumentException e) {
+			response = "Not Deleted , Please try again";
+		}
+		catch (EmptyResultDataAccessException e) {
+			response = "No User Present with this User Id";
+		}
+		catch(Exception e) {
+			response =  "Something Wrong";
+		}
+		return response;
+	}
+
 	public String editHealthCareProvider(HealthCareProviderDto careProviderDto, int healthCareProviderId) {
 		String response=null;
 		try {

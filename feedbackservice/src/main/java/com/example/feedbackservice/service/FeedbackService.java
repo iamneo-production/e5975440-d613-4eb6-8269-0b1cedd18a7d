@@ -56,6 +56,25 @@ public class FeedbackService {
 		return response;
 	}
 
+	public String deleteQueryByPatientId(int patientID) {
+		String response;
+
+		try {
+			feedbackRepo.deleteByPatientId(patientID);
+			response = "Successfully Deleted";
+		}
+		catch(IllegalArgumentException e) {
+			response = "Not Deleted , Please try again";
+		}
+		catch (EmptyResultDataAccessException e) {
+			response = "No User Present with this User Id";
+		}
+		catch(Exception e) {
+			response =  "Something Wrong";
+		}
+		return response;
+	}
+
 	public String editUser(PatientQueryDto patientQueryDto, int queryId) {
 		String response=null;
 		try {

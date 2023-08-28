@@ -15,4 +15,6 @@ public interface MedicationRepo extends JpaRepository<Medication,Integer> {
 	 public List<Medication> findByPatientId(int patientId);
 	 public List<Medication> findAllByPatientIdAndCreatedOnBetween(int patientId,LocalDateTime startDate, 
 			 LocalDateTime endDate);
+
+	public deleteByPatientId(int patientId);
 }

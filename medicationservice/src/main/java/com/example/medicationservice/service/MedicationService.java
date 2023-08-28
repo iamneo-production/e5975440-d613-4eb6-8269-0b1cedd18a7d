@@ -43,6 +43,29 @@ public class MedicationService {
 
 		try {
 			medicationRepo.deleteById(medicationId);
+			viewAdherence.deleteAdherenceByMedicationId(medicationId);
+
+			response = "Successfully Deleted"; 
+		}
+		catch(IllegalArgumentException e) {
+			response = "Not Deleted , Please try again";
+		}
+		catch (EmptyResultDataAccessException e) {
+			response = "No User Present with this User Id";
+		}
+		catch(Exception e) {
+			response =  "Something Wrong";
+		}
+		return response;
+	}
+
+	public String deleteMedicationByPatientId(int patientId) {
+		String response;
+
+		try {
+			medicationRepo.deleteByPatientId(patientId);
+			Medication medication=medicationRepo.findByPatientId(patientId).get();
+			viewAdherence.deleteAdherenceByMedicationId(medication.getMedicationId());
 			response = "Successfully Deleted"; 
 		}
 		catch(IllegalArgumentException e) {

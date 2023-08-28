@@ -12,4 +12,5 @@ import com.example.healthcareprovider.model.HealthCareProvider;
 @Repository
 public interface HealthCareRepo extends JpaRepository<HealthCareProvider,Integer> {
 	 Optional<HealthCareProvider> findByUserId(int userid);
+	 deleteByUserId(int userId);
 } 

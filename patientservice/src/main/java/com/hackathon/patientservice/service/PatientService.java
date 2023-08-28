@@ -31,6 +31,9 @@ public class PatientService {
 	
 	@Autowired
 	ViewAdherence viewAdherence;
+
+	// @Autowired
+	// ViewFeedback viewFeedback;
 	
 	@Autowired
 	ViewQuery viewQuery; 
@@ -65,8 +68,14 @@ public class PatientService {
 	public String deletePatient(int patientId) {
 		String response;
 
+
+
 		try {
 			patientRepo.deleteById(patientId);
+			viewMedication.deleteMedicationByPatientId(patientId);
+			viewQuery.deleteQueryByPatientId(patientId);
+
+
 			response = "Successfully Deleted";
 		}
 		catch(IllegalArgumentException e) {
@@ -80,6 +89,32 @@ public class PatientService {
 		}
 		return response;
 	}
+
+	public String deletePatientByUserId(int userId) {
+		String response;
+
+		try {
+			patientRepo.deleteByUserId(userId);
+			Patient patient=patientRepo.findByUserId(userId).get();
+			viewMedication.deleteMedicationByPatientId(patient.getPatientId());
+			viewFeedback.deleteQueryByPatientId(patient.getPatientId());
+
+
+			response = "Successfully Deleted";
+		}
+		catch(IllegalArgumentException e) {
+			response = "Not Deleted , Please try again";
+		}
+		catch (EmptyResultDataAccessException e) {
+			response = "No User Present with this User Id";
+		}
+		catch(Exception e) {
+			response =  "Something Wrong";
+		}
+		return response;
+	}
+
+
 
 	public String editUser(PatientDto patientDto, int patientId) {
 		String response=null;

@@ -50,6 +50,11 @@ public class MedicationController {
 	public String deletemedication(@RequestParam(value = "id" , required = true) int medicationId ) {
 		return medicationService.deletemedication(medicationId);
 	}
+
+	@DeleteMapping("/deleteMedicationByPatientId")
+	public String deleteMedicationByPatientId(@RequestParam(value = "id" , required = true) int patientId ) {
+		return medicationService.deleteMedicationByPatientId(patientId);
+	}
 	
 	@PutMapping("/editmedication")
 	public String editmedication(@RequestBody MedicationDto medicationDto, @RequestParam(value = "id") int medicationId) {
@@ -60,7 +65,7 @@ public class MedicationController {
 	public  List<Medication> getMedicationByPatientId(@RequestParam(value="id" , required = true) int patientId) {//use for foreign key
 		return medicationService.getMedicationByPatientId(patientId);
 	}
-	
+
 	@GetMapping("/getReport")
 	public  List<Medication> getReport(@RequestBody ResponseDto responseDto,@RequestParam(value="id" , required = true) int patientId){
 		return medicationService.getReport(responseDto,patientId);

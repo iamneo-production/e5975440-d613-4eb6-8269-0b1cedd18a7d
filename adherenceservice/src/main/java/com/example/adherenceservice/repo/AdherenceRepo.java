@@ -13,5 +13,7 @@ public interface AdherenceRepo extends JpaRepository<Adherence,Integer> {
 	 public List<Adherence> findByMedicationId(int medicationId);
 	 public List<Adherence> findAllByMedicineTaken(boolean flag);
 	 public List<Adherence> findByUserId(int userId);
+	 deleteByUserId(int userId);
+	 deleteByMedicationId(int medicationId);
 	
 }

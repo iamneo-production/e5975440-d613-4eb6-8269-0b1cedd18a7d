@@ -25,6 +25,7 @@ public class PatientController {
 	@Autowired
 	PatientService patientService;
 	
+	
 	@PostMapping("/addPatient")
 	public String addPatient(@RequestBody PatientDto patientDto  , @RequestParam(value = "id") int userId) {
 		return patientService.addPatient(patientDto,userId);
@@ -42,7 +43,10 @@ public class PatientController {
 		return new Patient("Dummy Medical Condition", 1234);
 	}
 	
-	
+	@DeleteMapping("/deletePatientByUserId")
+	public String deletePatientByUserId(@RequestParam(value = "id" , required = true) int userId ) {
+		return patientService.deletePatientByUserId(userId);
+	}
 	
 	
 	@DeleteMapping("/deletePatient")
